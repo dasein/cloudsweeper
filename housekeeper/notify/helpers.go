@@ -1,9 +1,9 @@
 package notify
 
 import (
-	"brkt/housekeeper/cloud"
-	"brkt/housekeeper/cloud/billing"
-	"brkt/housekeeper/mailer"
+	"brkt/cloudsweeper/cloud"
+	"brkt/cloudsweeper/cloud/billing"
+	"brkt/cloudsweeper/mailer"
 	"bytes"
 	"fmt"
 	"html/template"

@@ -1,7 +1,7 @@
 package billing
 
 import (
-	"brkt/housekeeper/cloud"
+	"brkt/cloudsweeper/cloud"
 	"encoding/json"
 	"log"
 	"net/http"

@@ -8,12 +8,12 @@ RUN apk -U upgrade && \
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
-RUN mkdir -p $GOPATH/src/brkt/housekeeper
-ADD . $GOPATH/src/brkt/housekeeper/
-WORKDIR $GOPATH/src/brkt/housekeeper
+RUN mkdir -p $GOPATH/src/brkt/cloudsweeper
+ADD . $GOPATH/src/brkt/cloudsweeper/
+WORKDIR $GOPATH/src/brkt/cloudsweeper
 
 RUN go get ./...
 
-RUN python accounts_retriever.py --output=$GOPATH/src/brkt/housekeeper/aws_accounts.json
-RUN go build -o go-housekeeper cmd/*.go
-ENTRYPOINT [ "./go-housekeeper" ]
+RUN python accounts_retriever.py --output=$GOPATH/src/brkt/cloudsweeper/aws_accounts.json
+RUN go build -o cloudsweeper cmd/*.go
+ENTRYPOINT [ "./cloudsweeper" ]
