@@ -3,12 +3,14 @@ package notify
 import (
 	"brkt/cloudsweeper/cloud"
 	"brkt/cloudsweeper/cloud/billing"
+	"brkt/cloudsweeper/cloud/filter"
 	"brkt/cloudsweeper/mailer"
 	"bytes"
 	"fmt"
 	"html/template"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -72,6 +74,14 @@ func extraTemplateFunctions() template.FuncMap {
 				return "Yes"
 			}
 			return "No"
+		},
+		"whitelisted": func(res cloud.Resource) bool {
+			for key := range res.Tags() {
+				if strings.ToLower(key) == strings.ToLower(filter.WhitelistTagKey) {
+					return true
+				}
+			}
+			return false
 		},
 		"accucost": func(res cloud.Resource) string {
 			days := time.Now().Sub(res.CreationTime()).Hours() / 24.0
