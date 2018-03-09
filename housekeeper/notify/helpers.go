@@ -4,6 +4,7 @@ import (
 	"brkt/cloudsweeper/cloud"
 	"brkt/cloudsweeper/cloud/billing"
 	"brkt/cloudsweeper/cloud/filter"
+	"brkt/cloudsweeper/housekeeper"
 	"brkt/cloudsweeper/mailer"
 	"bytes"
 	"fmt"
@@ -104,6 +105,13 @@ func extraTemplateFunctions() template.FuncMap {
 			} else {
 				return ""
 			}
+		},
+		"maybeNameToID": func(name string, owners housekeeper.Owners) string {
+			nameToIDMap := owners.NameToID()
+			if ID, ok := nameToIDMap[name]; ok {
+				return ID
+			}
+			return ""
 		},
 	}
 }
