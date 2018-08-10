@@ -8,7 +8,7 @@ To setup HouseKeeper to work with your account, you must create a role in AWS to
 It's also possible to run `aws_setup.sh`, if you have the `aws` CLI installed and properly setup.
 
 ## Usage
-The program relies on having a list of account to actually check. This list can either be provided manually, or the python script in `accounts_retriever.py` can be used. This script will get an up-to-date mapping from the Metavisor repository on Gerrit. 
+The program relies on having a list of account to actually check. This list can either be provided manually, or through other scripts.
 
 The recommended way of using Housekeeper is through Docker. For the most common use cases, there are make targets (take a look in the `Makefile`).
 
@@ -46,3 +46,8 @@ A resource can have an expiry date. This is specified with the tag `Key: houseke
 #### Delete at
 If housekeeper has automatically marked a resource for deletion, it will have a tag with the key `housekeeper-delete-at`, and the value will be an RFC3339 encoded timestamp. If the current time is after that timestamp, the resource will get cleaned up.
 
+
+## LICENSE
+cloudsweeper is licenses under the BSD 2-clause licenses. Originally written at
+Bracket Computing, it was made open source by VMware to enable further
+development by the original authors.
