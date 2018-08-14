@@ -52,8 +52,7 @@ A resource can have an expiry date. This is specified with the tag `Key: houseke
 #### Delete at
 If housekeeper has automatically marked a resource for deletion, it will have a tag with the key `housekeeper-delete-at`, and the value will be an RFC3339 encoded timestamp. If the current time is after that timestamp, the resource will get cleaned up.
 
-
 ## LICENSE
-cloudsweeper is licensed under the BSD 2-clause licenses. Originally written at
-Bracket Computing, it was made open source by VMware to enable further
+CloudSweeper is licensed under the BSD 2-clause licenses. Originally written
+at Bracket Computing, it was made open source by VMware to enable further
 development by the original authors.
